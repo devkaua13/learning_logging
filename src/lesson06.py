@@ -21,14 +21,27 @@ main_formatter = logging.Formatter(fmt=format1)
 file_handler.setFormatter(main_formatter)
 stream_handler.setFormatter(main_formatter)
 
+
+# Configurando o root Logger
+# stream_handler_root =  logging.StreamHandler(sys.stdout)
+#stream_handler_root.setFormatter(
+#    logging.Formatter(fmt='ROOT: [%(filename)s %(message)s]')
+# )
+# stream_handler_root.setLevel(logging.DEBUG)
+# logging.basicConfig(level=logging.WARNING, handlers=[stream_handler_root])
+
+
 # Configurar o root logger com 2 handlers
-logging.basicConfig(handlers=[file_handler, stream_handler])
+# logging.basicConfig(handlers=[file_handler, stream_handler])
 
 # Cria o próprio Logger 
 logger = logging.getLogger('meuapp')
 
 #define o nivel do meu log
 logger.setLevel(logging.DEBUG)
+
+logger.addHandler(file_handler)
+logger.addHandler(stream_handler)
 
 # Testando retirar a lib externa do root logger - Contudo a melhor solução ainda é criar o proprio logger
 # logging.getLogger('markdown_it').setLevel(logging.WARNING)
