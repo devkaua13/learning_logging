@@ -5,7 +5,7 @@ format1 = "%(levelname)s|%(name)s|%(asctime)s|%(message)s|%(filename)s|%(lineno)
 logging.basicConfig(
     level = logging.DEBUG,
     format = format1,
-    filename = "log.log",
+    filename = "../log.log",
     filemode = "a",
     encoding = "utf-8",
 )
