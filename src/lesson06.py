@@ -8,7 +8,7 @@ format1 = "%(levelname)s|%(name)s|%(asctime)s|%(message)s|%(filename)s|%(lineno)
 # Podemos criar nossos próprios handlers usando as classes que foram mencionadas antes
 file_handler = logging.FileHandler(
     filename = '../log.log',
-    mode = 'a',
+    mode = 'w',
     encoding = 'utf-8',
 )
 
@@ -25,13 +25,16 @@ stream_handler.setFormatter(main_formatter)
 logging.basicConfig(handlers=[file_handler, stream_handler])
 
 # Cria o próprio Logger 
-logger = logging.getLogger("meuapp")
+logger = logging.getLogger('meuapp')
 
 #define o nivel do meu log
 logger.setLevel(logging.DEBUG)
 
+# Testando retirar a lib externa do root logger - Contudo a melhor solução ainda é criar o proprio logger
+# logging.getLogger('markdown_it').setLevel(logging.WARNING)
+
 # Saída nos dois handlers
-logger.debug("Mensagem para Kauã")
+logger.debug("Mensagem de teste para saber se o Just Cria")
 
 # Renderiza Markdown
 md = Markdown ("# Nos Handlers de `A`\n\nEste é um `Markdown`")
