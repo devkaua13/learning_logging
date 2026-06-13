@@ -23,12 +23,12 @@ stream_handler.setFormatter(main_formatter)
 
 
 # Configurando o root Logger
-# stream_handler_root =  logging.StreamHandler(sys.stdout)
-#stream_handler_root.setFormatter(
-#    logging.Formatter(fmt='ROOT: [%(filename)s %(message)s]')
-# )
-# stream_handler_root.setLevel(logging.DEBUG)
-# logging.basicConfig(level=logging.WARNING, handlers=[stream_handler_root])
+stream_handler_root =  logging.StreamHandler(sys.stdout)
+stream_handler_root.setFormatter(
+    logging.Formatter(fmt='ROOT: [%(filename)s %(message)s]')
+)
+stream_handler_root.setLevel(logging.INFO)
+logging.basicConfig(level=logging.WARNING, handlers=[stream_handler_root])
 
 
 # Configurar o root logger com 2 handlers
@@ -40,6 +40,9 @@ logger = logging.getLogger('meuapp')
 #define o nivel do meu log
 logger.setLevel(logging.DEBUG)
 
+# Como desativar a propagação, que nada mais é que não levar esse log para os outros logs pais dele
+logger.propagate = False
+
 logger.addHandler(file_handler)
 logger.addHandler(stream_handler)
 
@@ -47,7 +50,7 @@ logger.addHandler(stream_handler)
 # logging.getLogger('markdown_it').setLevel(logging.WARNING)
 
 # Saída nos dois handlers
-logger.debug("Mensagem de teste para saber se o Just Cria")
+logger.info("Mensagem de teste para saber se o Just Cria")
 
 # Renderiza Markdown
 md = Markdown ("# Nos Handlers de `A`\n\nEste é um `Markdown`")
