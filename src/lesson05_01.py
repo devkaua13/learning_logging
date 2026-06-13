@@ -11,3 +11,12 @@ file_handler = logging.FileHandler(
 )
 
 stream_handler = logging.StreamHandler(sys.stdout)
+
+# Nossos Handlers precisam de Formatters
+main_formatter = logging.Formatter(fmt=format1)
+
+# A configuração do formatter pode ser reutilizada
+file_handler.setFormatter(main_formatter)
+stream_handler.setFormatter(main_formatter)
+
+
