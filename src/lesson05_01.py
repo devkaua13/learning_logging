@@ -19,4 +19,18 @@ main_formatter = logging.Formatter(fmt=format1)
 file_handler.setFormatter(main_formatter)
 stream_handler.setFormatter(main_formatter)
 
+# Configurar o root logger com 2 handlers
+logging.basicConfig(handlers=[file_handler, stream_handler])
 
+# Cria o próprio Logger 
+logger = logging.getLogger("meuapp")
+
+#define o nivel do meu log
+logger.setLevel(logging.DEBUG)
+
+# Saída nos dois handlers
+logger.debug("Mensagem para Kauã")
+logger.info("Mensagem para Marina")
+logger.warning("Mensagem para Test")
+logger.error("Mensagem para eu mesmo")
+logger.critical("Mensagem para Marina mesmo")
