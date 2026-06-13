@@ -34,3 +34,10 @@ logger.info("Mensagem para Marina")
 logger.warning("Mensagem para Test")
 logger.error("Mensagem para eu mesmo")
 logger.critical("Mensagem para Marina mesmo")
+
+# Exception
+try: 
+    print(1 / 0)
+except ZeroDivisionError:
+    logger.exception("Alguém tentou dividir por 0 ai rsrs")
+    
