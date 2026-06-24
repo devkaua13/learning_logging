@@ -28,6 +28,14 @@ LOGGING_CONFIG: dict[str, Any] = {
         "console_stdout":{"format": "OUT: %(message)s", "datefmt": "[%X]"},
     },
 
+    "filters": {
+        "max_level_info":{
+            "()": "filters.MaxLevelFilter",
+            "max_level": "INFO",
+            
+        }
+    },
+
     "handlers":{
 
         "console_stdout":{
@@ -42,6 +50,8 @@ LOGGING_CONFIG: dict[str, Any] = {
             "enable_link_path": True,
             "show_path": True,
             "file": "stdout",
+            "level": "DEBUG",
+            "filters": ["max_level_info"]
         },
 
         "console_stderr":{
@@ -56,6 +66,7 @@ LOGGING_CONFIG: dict[str, Any] = {
             "enable_link_path": True,
             "show_path": True,
             "file": "stderr",
+            "level": "WARNING",
         },
          
         "file": {
