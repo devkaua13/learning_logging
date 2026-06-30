@@ -8,6 +8,9 @@
     "format": 
     "%(levelname)s|%(name)s|%(asctime)s|%(message)s|%(filename)s|%(lineno)d|%(funcName)s|%(module)s|%(process)d|%(processName)s|%(thread)d|%(threadName)s|%(taskName)s"   
   },
+    "json": {
+      "()": "formatters.JSONLogFormatter"
+    },
 
   "console_stderr":{"format": "ERR: %(message)s", "datefmt": "[%X]"},
 
@@ -56,8 +59,8 @@
 
     "file": {
       "class": "logging.handlers.RotatingFileHandler",
-      "formatter": "file",
-      "filename": "logs/log.log",
+      "formatter": "json",
+      "filename": "logs/log.json",
       "maxBytes": 5242880,
       "backupCount": 5,
       "encoding": "utf-8"
@@ -68,7 +71,7 @@
     "handlers": ["console_stdout", "console_stderr", "file"]
   },
   "loggers": {
-    "meuapp": {
+      "meuapp": {
       "level": "DEBUG"
     }
   }
